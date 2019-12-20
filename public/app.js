@@ -51,7 +51,7 @@ new Vue({
         },
 
         gravatarURL: function(email) {
-            return 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email);
+            return 'https://www.gravatar.com/avatar/' + CryptoJS.MD5(email);
         },
 
         maybeReconnectToWebsocket: function(event) {
