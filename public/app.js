@@ -12,7 +12,8 @@ new Vue({
 
     created: function() {
         var self = this;
-        var debug = false;
+        var debug = window.location.host === "localhost:8000";
+        console.log("host:",window.location.host);
         if (location.protocol != 'https:' && !debug)
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
