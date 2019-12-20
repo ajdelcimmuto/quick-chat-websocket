@@ -1,10 +1,10 @@
 package main
 
 import (
-	"log"
-	"net/http"
-
 	"github.com/gorilla/websocket"
+	"github.com/sirupsen/logrus"
+	"net/http"
+	"os"
 )
 
 var clients = make(map[*websocket.Conn]bool) // connected clients
@@ -24,9 +24,20 @@ type Message struct {
 	Message  string `json:"message"`
 }
 
+var (
+	log = logrus.WithField("cmd", "go-realtime-chat")
+)
+
 func main() {
+
+	// Check to see if PORT has been set
+	port := os.Getenv("PORT")
+	if port == "" {
+		//log.WithField("PORT", port).Fatal("$PORT must be set")
+	}
+
 	// Create a simple file server
-	fs := http.FileServer(http.Dir("../public"))
+	fs := http.FileServer(http.Dir("public"))
 	http.Handle("/", fs)
 
 	// Configure websocket route
@@ -36,7 +47,7 @@ func main() {
 	go handleMessages()
 
 	// Start the server on localhost port 8000 and log any errors
-	log.Println("http server started on :8000")
+	log.Println("http server started on :", port)
 	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
