@@ -7,31 +7,19 @@ new Vue({
         chatContent: '', // A running list of chat messages displayed on the screen
         email: null, // Email address used for grabbing an avatar
         username: null, // Our username
-        joined: false // True if email and username have been filled in
+        joined: false, // True if email and username have been filled in
+        autoReconnectInterval: 100
     },
 
     created: function() {
-        var self = this;
         var debug = window.location.host === "localhost:8000";
         console.log("host:",window.location.host);
+
         if (location.protocol != 'https:' && !debug)
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-        }
-
-        this.ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/ws");
-
-        this.ws.addEventListener('message', function(e) {
-            var msg = JSON.parse(e.data);
-            self.chatContent += '<div class="chip">'
-                    + '<img src="' + self.gravatarURL(msg.email) + '">' // Avatar
-                    + msg.username
-                + '</div>'
-                + emojione.toImage(msg.message) + '<br/>'; // Parse emojis
-
-            var element = document.getElementById('chat-messages');
-            element.scrollTop = element.scrollHeight; // Auto scroll to the bottom
-        });
+        } 
+        this.open();
     },
 
     methods: {
@@ -64,6 +52,58 @@ new Vue({
 
         gravatarURL: function(email) {
             return 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email);
+        },
+
+        maybeReconnectToWebsocket: function(event) {
+            switch (event.code){
+                case 1000:	// CLOSE_NORMAL
+                    console.log("WebSocket: closed");
+                    break;
+                default:	// Abnormal closure
+                    this.reconnect(event);
+                    break;
+                }
+                //this.onclose(e);
+        },
+
+        reconnect: function(event) {
+            console.log(`WebSocketClient: retry in ${this.autoReconnectInterval}ms`,event);
+            this.ws.addEventListener('message',null);
+            this.ws.addEventListener('close',null);
+            this.ws = null;
+            var that = this;
+            setTimeout(function(){
+                console.log("WebSocketClient: reconnecting...");
+                that.open();
+            },this.autoReconnectInterval);
+        },
+
+        open: function() {
+            var self = this;
+            this.ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/ws");
+
+            this.ws.addEventListener('message', function(e) {
+                var msg = JSON.parse(e.data);
+                self.chatContent += '<div class="chip">'
+                        + '<img src="' + self.gravatarURL(msg.email) + '">' // Avatar
+                        + msg.username
+                    + '</div>'
+                    + emojione.toImage(msg.message) + '<br/>'; // Parse emojis
+    
+                var element = document.getElementById('chat-messages');
+                element.scrollTop = element.scrollHeight; // Auto scroll to the bottom
+            });
+    
+    
+            this.ws.addEventListener('close', (event) => {
+                this.maybeReconnectToWebsocket(event);
+            });
+            },
+
+        close: function() {
+            this.ws.close(1000);
+            this.joined = false;
         }
+        
     }
 });
