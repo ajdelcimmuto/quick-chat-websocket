@@ -19,7 +19,6 @@ new Vue({
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
         } 
-        this.open();
     },
 
     methods: {
@@ -48,6 +47,7 @@ new Vue({
             this.email = $('<p>').html(this.email).text();
             this.username = $('<p>').html(this.username).text();
             this.joined = true;
+            this.open();
         },
 
         gravatarURL: function(email) {
