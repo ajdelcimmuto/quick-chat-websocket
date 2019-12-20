@@ -33,7 +33,7 @@ func main() {
 	// Check to see if PORT has been set
 	port := os.Getenv("PORT")
 	if port == "" {
-		//log.WithField("PORT", port).Fatal("$PORT must be set")
+		log.WithField("PORT", port).Fatal("$PORT must be set")
 	}
 
 	// Create a simple file server
