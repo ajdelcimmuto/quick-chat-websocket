@@ -12,6 +12,11 @@ new Vue({
 
     created: function() {
         var self = this;
+        var debug = true;
+        if (location.protocol != 'https:' && !debug)
+        {
+         location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
 
         this.ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/ws");
 
