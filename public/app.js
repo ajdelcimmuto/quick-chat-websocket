@@ -12,7 +12,12 @@ new Vue({
 
     created: function() {
         var self = this;
-        this.ws = new WebSocket(location.protocol.replace("http","ws") + "//" + location.host + "/ws");
+        if(location.protocol == "http") {
+            this.ws = new WebSocket(location.protocol.replace("http","ws") + "//" + location.host + "/ws");
+        }
+        else {
+            this.ws = new WebSocket(location.protocol.replace("https","wss") + "//" + location.host + "/ws");
+        }
         this.ws.addEventListener('message', function(e) {
             var msg = JSON.parse(e.data);
             self.chatContent += '<div class="chip">'
