@@ -12,7 +12,7 @@ new Vue({
 
     created: function() {
         var self = this;
-        var debug = true;
+        var debug = false;
         if (location.protocol != 'https:' && !debug)
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
