@@ -4,6 +4,15 @@ body {
     flex-direction: column;
 }
 
+.nav-container {
+    display: flex;
+}
+
+#bigolbalsacks {
+    border-radius: 50%;
+    width: 35px;
+  }
+
 main {
     flex: 1 0 auto;
 }
@@ -13,4 +22,5 @@ main {
     height: 60vh;
     width: 100%;
     overflow-y: scroll;
+    color:white;
 }
