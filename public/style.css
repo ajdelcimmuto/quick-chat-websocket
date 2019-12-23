@@ -14,15 +14,17 @@ body {
   }
 
 main {
-    flex: 1 0 auto;
+    flex: 0 1 auto;
+}
+
+.container-border {
+    border-style: solid;
+    border-width: 3px;
+    background-color: white;
 }
 
 .brand-logo{
 	font-weight:900;
-}
-
-.button-overlay{
-    z-index: -1;
 }
 
 .dropdown-content {

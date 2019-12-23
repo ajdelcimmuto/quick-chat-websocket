@@ -9,20 +9,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/emojione/2.2.6/assets/css/emojione.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
     <link rel="stylesheet" href="style.css">
-
+    
+    <link rel="icon" href="assets/BambuLogo.png">
 </head>
 <body>
 <header>
     <nav>
-        <div class="nav-wrapper lime valign-wrapper">
-            <a href="/" class="brand-logo center" style="font-family:'Monoton',serif; font-size: 49px; color: black;">BAMBU</a>
+        <div class="nav-wrapper blue-grey darken-4 valign-wrapper z-depth-5">
+            <a href="/" class="brand-logo center hoverable" style="font-family:'Monoton',serif; font-size: 49px; color: #dce775;">BAMBU</a>
               <!-- Dropdown Trigger -->
-            <a class='dropdown-button btn brand-logo right' id="dropdown-button" data-beloworigin="true" href='#' data-activates='dropdown1'>
-                <img class="brand-logo right" src="../assets/account_circle-24px.svg" alt="Avatar" style="border-radius: 50%; width: 35px;">
+            <a class='dropdown-button btn brand-logo right lime lighten-2' id="dropdown-button" data-beloworigin="true" href='#' data-activates='dropdown1'>
+                <img class="brand-logo right hoverable" src="../assets/account_circle-24px.svg" alt="Avatar" style="border-radius: 50%; width: 35px;">
             </a>
 
             <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content lime lighten-4 ' style="z-index: 7;"> 
+            <ul id='dropdown1' class='dropdown-content lime lighten-2' style="z-index: 7;"> 
                 <li><a class="black-text" href="#!"><i class="material-icons">account_box</i>Account</a></li>
                 <li><a class="black-text" href="#!"><i class="material-icons"></i>two</a></li>
                 <li class="divider black" tabindex="-1"></li>
@@ -30,20 +31,21 @@
                 <li><a class="black-text href="#!"><i class="material-icons">view_module</i>four</a></li>
                 <li><a class="black-text href="#!"><i class="material-icons">cloud</i>five</a></li>
             </ul>
+            <a class="btn-floating "><i class="material-icons">add</i></a>
+
         </div>
     </nav>
 </header>
 <main id="app">
-    <div class="col grey darken-4 z-depth-5">
-        <div class="row s12 center" ><span class="flow-text white-text">This div is 12-columns wide on all screen sizes</div>
-        <div class="row s12">
-            <div class="card horizontal grey darken-4">
-                <div id="chat-messages" class="card-content" v-html="chatContent" >
-                </div>
-                    <button class="waves-effect green darken-3 btn" @click="close" style="margin: 10px;" id="close-button">
-                        <i class="material-icons right-align">close</i>
-                    </button>
+    <div class="col s12 blue-grey darken-4">     
+        <div class="row-content center" style="border-bottom: 1px solid #424242"> <span class="flow-text white-text">This div is 12-columns wide on all screen sizes</div>
+
+        <div class="row" style="position: relative;">
+            <div id="chat-messages" class="card-content" style="margin: 5px;" v-html="chatContent" >
             </div>
+            <button class="waves-effect lime lighten-2 btn valign-wrapper right" @click="close" style="margin: 5px; position: absolute; top: 0px; right: 0px;" id="close-button">
+                    <i class="material-icons">close</i>
+            </button>
         </div>
     </div>
     <div class="row" v-if="joined">
@@ -51,7 +53,7 @@
             <input type="text" v-model="newMsg" placeholder="Say something here" @keyup.enter="send">
         </div>
         <div class="input-field col s4">
-            <button class="waves-effect green darken-3 btn" @click="send">
+            <button class="waves-effect lime lighten-2 btn" @click="send">
                 <i class="material-icons right">chat</i>
                 Send
             </button>
@@ -65,15 +67,38 @@
             <input type="text" v-model.trim="username" placeholder="Username">
         </div>
         <div class="input-field col s4">
-            <button class="waves-effect green darken-3 btn" @click="join()">
+            <button class="waves-effect lime lighten-2 btn" @click="join()">
                 <i class="material-icons right">done</i>
                 Join
             </button>
         </div>
     </div>
 </main>
-<footer class="page-footer lime">
-</footer>
+<footer class="page-footer blue-grey darken-4">
+        <div class="container ">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Footer Content</h5>
+              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Links</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+          © 2014 Copyright Text
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </footer>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/emojione/2.2.6/lib/js/emojione.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
