@@ -1,3 +1,4 @@
+
 new Vue({
     el: '#app',
 
@@ -19,6 +20,14 @@ new Vue({
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
         } 
+        
+        document.getElementById("dropdown1").addEventListener("click", function(e) {
+            if(e.target.text) {
+                console.log(e.target.text);
+            }
+        });
+
+
     },
 
     methods: {
@@ -82,8 +91,8 @@ new Vue({
             var self = this;
             this.ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/ws");
 
-            this.ws.addEventListener('message', function(e) {
-                var msg = JSON.parse(e.data);
+            this.ws.addEventListener('message', function(event) {
+                var msg = JSON.parse(event.data);
                 self.chatContent += '<div class="chip">'
                         + '<img src="' + self.profileURL(msg.email) + '">' // Avatar
                         + msg.username
@@ -94,7 +103,7 @@ new Vue({
                 element.style.color = "#FFFFFF";
                 element.scrollTop = element.scrollHeight; // Auto scroll to the bottom
             });
-    
+            $(document).ready
     
             this.ws.addEventListener('close', (event) => {
                 this.maybeReconnectToWebsocket(event);

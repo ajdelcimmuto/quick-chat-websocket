@@ -7,66 +7,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/emojione/2.2.6/assets/css/emojione.min.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Girassol">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
     <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 <header>
     <nav>
-        <div class="nav-wrapper light-blue darken-4 valign-wrapper">
-            <a href="/" class="brand-logo center" style="font-family:'Girassol',serif;">Yaky</a>
-            <img class="brand-logo right" src="../assets/account_circle-24px.svg" alt="Avatar" style="border-radius: 50%; width: 35px;">
+        <div class="nav-wrapper lime valign-wrapper">
+            <a href="/" class="brand-logo center" style="font-family:'Monoton',serif; font-size: 49px; color: black;">BAMBU</a>
+              <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn brand-logo right' id="dropdown-button" data-beloworigin="true" href='#' data-activates='dropdown1'>
+                <img class="brand-logo right" src="../assets/account_circle-24px.svg" alt="Avatar" style="border-radius: 50%; width: 35px;">
+            </a>
+
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content lime lighten-4 ' style="z-index: 7;"> 
+                <li><a class="black-text" href="#!"><i class="material-icons">account_box</i>Account</a></li>
+                <li><a class="black-text" href="#!"><i class="material-icons"></i>two</a></li>
+                <li class="divider black" tabindex="-1"></li>
+                <li><a class="black-text href="#!"><i class="material-icons"></i>three</a></li>
+                <li><a class="black-text href="#!"><i class="material-icons">view_module</i>four</a></li>
+                <li><a class="black-text href="#!"><i class="material-icons">cloud</i>five</a></li>
+            </ul>
         </div>
     </nav>
 </header>
 <main id="app">
-    <div class="row light-blue darken-3">
-        <div class="col s12">
+    <div class="col grey darken-4 z-depth-5">
+        <div class="row s12 center" ><span class="flow-text white-text">This div is 12-columns wide on all screen sizes</div>
+        <div class="row s12">
             <div class="card horizontal grey darken-4">
                 <div id="chat-messages" class="card-content" v-html="chatContent" >
                 </div>
-                <div class="input-field col s1">
-                    <button class="waves-effect light-blue darken-3 btn" @click="close">
+                    <button class="waves-effect green darken-3 btn" @click="close" style="margin: 10px;" id="close-button">
                         <i class="material-icons right-align">close</i>
                     </button>
-                </div>        
             </div>
         </div>
     </div>
     <div class="row" v-if="joined">
-        <div class="input-field col s8">
-            <input type="text" v-model="newMsg" @keyup.enter="send">
+        <div class="input-field col s4">
+            <input type="text" v-model="newMsg" placeholder="Say something here" @keyup.enter="send">
         </div>
         <div class="input-field col s4">
-            <button class="waves-effect light-blue darken-3 btn" @click="send">
+            <button class="waves-effect green darken-3 btn" @click="send">
                 <i class="material-icons right">chat</i>
                 Send
             </button>
         </div>
     </div>
     <div class="row" v-if="!joined">
-        <div class="input-field col s8">
+        <div class="input-field col s4">
             <input type="email" v-model.trim="email" placeholder="Email">
         </div>
-        <div class="input-field col s8">
+        <div class="input-field col s4">
             <input type="text" v-model.trim="username" placeholder="Username">
         </div>
         <div class="input-field col s4">
-            <button class="waves-effect light-blue darken-3 btn" @click="join()">
+            <button class="waves-effect green darken-3 btn" @click="join()">
                 <i class="material-icons right">done</i>
                 Join
             </button>
         </div>
     </div>
 </main>
-<footer class="page-footer light-blue darken-4">
+<footer class="page-footer lime">
 </footer>
-<script src="https://unpkg.com/vue@2.1.3/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/emojione/2.2.6/lib/js/emojione.min.js"></script>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-<script  type="text/javascript" src="/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/app.js"></script>
 </body>
 </html>
