@@ -15,13 +15,12 @@
 <body>
 <header>
     <nav>
-        <div class="nav-wrapper blue-grey darken-4 valign-wrapper z-depth-5">
-            <a href="/" class="brand-logo center hoverable" style="font-family:'Monoton',serif; font-size: 49px; color: #dce775;">BAMBU</a>
-              <!-- Dropdown Trigger -->
-            <a class='dropdown-button btn brand-logo right lime lighten-2' id="dropdown-button" data-beloworigin="true" href='#' data-activates='dropdown1'>
-                <img class="brand-logo right hoverable" src="../assets/account_circle-24px.svg" alt="Avatar" style="border-radius: 50%; width: 35px;">
+        <div class="nav-wrapper blue-grey darken-4 z-depth-5">
+            <!-- Dropdown Trigger -->
+            <a class="right dropdown-button btn-floating lime lighten-2 hoverable" data-beloworigin="true" href='#' id="dropdown-button" style="margin: 10px;" data-activates='dropdown1'>
+                    <i class="material-icons" style="line-height: 40px; color: black;">account_circle</i>
             </a>
-
+            <a href="/" class="brand-logo center hoverable" style="font-family:'Monoton',serif; font-size: 49px; color: #dce775;">BAMBU</a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content lime lighten-2' style="z-index: 7;"> 
                 <li><a class="black-text" href="#!"><i class="material-icons">account_box</i>Account</a></li>
@@ -31,7 +30,6 @@
                 <li><a class="black-text href="#!"><i class="material-icons">view_module</i>four</a></li>
                 <li><a class="black-text href="#!"><i class="material-icons">cloud</i>five</a></li>
             </ul>
-            <a class="btn-floating "><i class="material-icons">add</i></a>
 
         </div>
     </nav>
@@ -43,7 +41,7 @@
         <div class="row" style="position: relative;">
             <div id="chat-messages" class="card-content" style="margin: 5px;" v-html="chatContent" >
             </div>
-            <button class="waves-effect lime lighten-2 btn valign-wrapper right" @click="close" style="margin: 5px; position: absolute; top: 0px; right: 0px;" id="close-button">
+            <button class="waves-effect lime lighten-2 btn valign-wrapper right" @click="close" style="margin: 10px; position: absolute; top: 0px; right: 0px;" id="close-button">
                     <i class="material-icons">close</i>
             </button>
         </div>
@@ -78,24 +76,17 @@
         <div class="container ">
           <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <h3 class="white-text">Bambu</h5>
+              <p class="grey-text text-lighten-4">A Real Time Chat application for the web.</p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-              </ul>
             </div>
           </div>
         </div>
         <div class="footer-copyright">
           <div class="container">
-          © 2014 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          © 2019 Copyright 
+          <a class="grey-text text-lighten-4 right" href="github.com/ImVerbatim">More Links</a>
           </div>
         </div>
       </footer>
