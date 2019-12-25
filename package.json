@@ -1,0 +1,26 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "This is a chat web app written in Go. It is configured to run in a heroku environment out of the box, so it will take some configuration to get it to work without it.",
+  "main": "./public/app.js",
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
+  "engines": {
+    "node": "13.x"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImVerbatim/quick-chat-websocket.git"
+  },
+  "author": "AJ Delcimmuto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImVerbatim/quick-chat-websocket/issues"
+  },
+  "homepage": "https://github.com/ImVerbatim/quick-chat-websocket#readme"
+}

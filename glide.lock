@@ -1,10 +1,15 @@
 hash: 7473b80cc981eab35d9f22b6f6a6422c141b50169dae7b72edf8b92e335591c0
-updated: 2019-12-19T18:27:35.07696-06:00
+updated: 2019-12-25T10:06:18.778351-06:00
 imports:
 - name: github.com/gorilla/websocket
   version: c3e18be99d19e6b3e8f1559eea2c161a665c4b6b
 - name: github.com/konsorten/go-windows-terminal-sequences
   version: f55edac94c9bbba5d6182a4be46d86a2c9b5b50e
+- name: github.com/lib/pq
+  version: 99274577be97ac9b1d95a2d61d566dc9b7cc6a54
+  subpackages:
+  - oid
+  - scram
 - name: github.com/sirupsen/logrus
   version: 839c75faf7f98a33d445d181f3018b5c3409a45e
 - name: golang.org/x/sys

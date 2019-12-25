@@ -20,12 +20,19 @@ new Vue({
         {
          location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
         } 
-        
+
         document.getElementById("dropdown1").addEventListener("click", function(e) {
             if(e.target.text) {
                 console.log(e.target.text);
             }
         });
+
+        document.getElementById("chat-messages").onscroll = function(event) {
+            var element = document.getElementById("chat-messages");
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+                alert("you're at the bottom of the page");
+            }
+        }
 
 
     },
@@ -90,7 +97,7 @@ new Vue({
         open: function() {
             var self = this;
             this.ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") + window.location.host + "/ws");
-
+            
             this.ws.addEventListener('message', function(event) {
                 var msg = JSON.parse(event.data);
                 self.chatContent += '<div class="chip">'
